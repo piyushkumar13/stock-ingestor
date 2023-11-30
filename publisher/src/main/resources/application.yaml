@@ -1,0 +1,70 @@
+server:
+  port: "${SERVER_PORT}"
+
+spring:
+  datasource:
+    username: "${DATASOURCE_USERNAME}"
+    password: "${DATASOURCE_PASSWORD}"
+    url: "jdbc:mysql://${DATASOURCE_HOST}:${DATASOURCE_MYSQL_PORT}/${DATASOURCE_DATABASE}?serverTimezone=UTC&useUnicode=true@characterEncoding=utf-8"
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+        ddl-auto: none
+    show-sql: "${JPA_SHOW_SQL}"
+
+
+scheduler:
+  cronExpression: "*/5 * * * * *" # every 5 seconds
+  lockAtLeastFor: "PT5S"
+  lockAtMostFor: "PT6S"
+
+#  cronExpression: "*/10 * * * * *" # every 10 seconds
+#  lockAtLeastFor: "PT10S"
+#  lockAtMostFor: "PT11S"
+#
+#  cronExpression: "0 * * * * *" # every minute
+#  lockAtLeastFor: "PT1M"
+#  lockAtMostFor: "PT2M"
+#
+#  cronExpression: "0 *10 * * * *" #every 10 minutes
+#  lockAtLeastFor: "PT10M"
+#  lockAtMostFor: "PT11M"
+
+
+stocks:
+  stockDetailsList:
+    - scriptName: "VMW"
+      company: "VMWare"
+      price: 12564
+      listedAt: "2023-04-22T10:56:08+00:00"
+      currency: "USD"
+
+    - scriptName: "ALPHABET"
+      company: "Google"
+      price: 10529
+      listedAt: "2023-04-22T10:56:08+00:00"
+      currency: "USD"
+
+    - scriptName: "WALMART"
+      company: "Walmart"
+      price: 15097
+      listedAt: "2023-04-22T10:56:08+00:00"
+      currency: "USD"
+
+    - scriptName: "AMAZON"
+      company: "Amazon"
+      price: 10381
+      listedAt: "2023-04-22T10:56:08+00:00"
+      currency: "USD"
+
+    - scriptName: "APPLE"
+      company: "Apple"
+      price: 16665
+      listedAt: "2023-04-22T10:56:08+00:00"
+      currency: "USD"
+
+aws:
+  s3:
+    bucketName: "${AWS_S3_BUCKET_NAME}"

@@ -1,0 +1,1 @@
+CREATE INDEX idx_script_name_updated_at ON script_price_details (script_name, updated_at);
